@@ -10,6 +10,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = function(app){
 
+  app.use(bodyParser.json())
 app.get('/todo', function(req, res){
  res.render('todo',{todos: data});
 });
@@ -17,6 +18,7 @@ app.get('/todo', function(req, res){
 app.post('/todo', urlencodedParser, function(req, res) {
   console.log(req.body); 
   data.push(req.body);
+  console.log('data ', data)
   res.json(data);
 });
 
